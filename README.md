@@ -20,4 +20,4 @@ The web app needs to be uploaded to the ledunia's SPIFFS. You can do this within
 * Upload the sketch using the Upload button
 * Browse to http://Your-IP-or-DNS-Name (first load will take a while, be patient)
 
-You can use additional WS2812b (aka Neopixel) LEDs by using GPIO DOUT.
+You can use additional WS2812b (aka Neopixel) LEDs by using ledunia's GPIO "DOUT".
