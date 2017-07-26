@@ -10,4 +10,4 @@
 * Navigate to: ->Tools->ESP8266 Sketch Data Upload (this upload process will take a while)
 * Browse to http://Your-IP-or-DNS-Name (first load will take a while, be patient)
 
-You can additional WS2812B (aka Neopixel) LEDs by using GPIO DOUT.
+You can use additional WS2812b (aka Neopixel) LEDs by using GPIO DOUT.
