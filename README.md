@@ -8,12 +8,12 @@ Prepare the Arduino IDE for ledunia support: http://ledunia.de/index.php/2017-07
 The app depends on the following libraries. They must either be downloaded from GitHub and placed in the Arduino 'libraries' folder, or installed as described here by using the Arduino library manager (->Sketch->Include Libraries->Manage Libraries):
 
 * FastLED (Version 3.1.3)
-* IRremoteESP8266
+* IRremoteESP8266 (Version 1.2.0)
 * Arduino WebSockets
 
 Download the app code from GitHub using the green Clone or Download button from the GitHub project main page and click Download ZIP. Decompress the ZIP file in your Arduino sketch folder.
 
-The web app needs to be uploaded to the ledunia's SPIFFS. You can do this within the Arduino IDE after installing the Arduino ESP8266FS tool: https://github.com/esp8266/Arduino/blob/master/doc/filesystem.md#uploading-files-to-file-system
+The web app needs to be uploaded to the ledunia's SPIFFS. You can do this within the Arduino IDE after installing the Arduino ESP8266FS tool: https://github.com/esp8266/Arduino/blob/master/doc/filesystem.rst#uploading-files-to-file-system
 
 * Don't forget to change "SSID", "Password" and the "DNS Name" in the sketch
 * Navigate to: ->Tools->ESP8266 Sketch Data Upload (this upload process will take a while)
