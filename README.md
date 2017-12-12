@@ -13,7 +13,7 @@ The app depends on the following libraries. They must either be downloaded from 
 
 Download the app code from GitHub using the green Clone or Download button from the GitHub project main page and click Download ZIP. Decompress the ZIP file in your Arduino sketch folder.
 
-The web app needs to be uploaded to the ledunia's SPIFFS. You can do this within the Arduino IDE after installing the Arduino ESP8266FS tool: https://github.com/esp8266/Arduino/blob/master/doc/filesystem.md#uploading-files-to-file-system
+The web app needs to be uploaded to the ledunia's SPIFFS. You can do this within the Arduino IDE after installing the Arduino ESP8266FS tool: https://github.com/ledunia/arduino-esp8266fs-plugin
 
 * Don't forget to change "SSID", "Password" and the "DNS Name" in the sketch
 * Navigate to: ->Tools->ESP8266 Sketch Data Upload (this upload process will take a while)
