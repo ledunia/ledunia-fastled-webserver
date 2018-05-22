@@ -26,6 +26,8 @@ if(jQuery)(function($){$.minicolors={defaults:{animationSpeed:50,animationEasing
 var urlBase = ""; // used when hosting the site on the ESP8266
 
 var brightnessTimer = {};
+var bpmTimer = {};
+var speedTimer = {};
 var colorTimer = {};
 
 var ignoreColorChange = true;
@@ -57,6 +59,22 @@ $("#btnPowerOff").click(function() {
   setPower(0);
 });
 
+$("#btnAutoplayOn").click(function() {
+  setAutoplay(1);
+});
+
+$("#btnAutoplayOff").click(function() {
+  setAutoplay(0);
+});
+
+$("#btnForwardOn").click(function() {
+  setForward(1);
+});
+
+$("#btnForwardOff").click(function() {
+  setForward(0);
+});
+
 $("#inputBrightness").on("change mousemove", function() {
    $("#spanBrightness").html($(this).val());
 });
@@ -64,6 +82,24 @@ $("#inputBrightness").on("change mousemove", function() {
 $("#inputBrightness").on("change", function() {
    $("#spanBrightness").html($(this).val());
    delaySetBrightness();
+});
+
+$("#inputBpm").on("change mousemove", function() {
+   $("#spanBpm").html($(this).val());
+});
+
+$("#inputBpm").on("change", function() {
+   $("#spanBpm").html($(this).val());
+   delaySetBpm();
+});
+
+$("#inputSpeed").on("change mousemove", function() {
+   $("#spanSpeed").html($(this).val());
+});
+
+$("#inputSpeed").on("change", function() {
+   $("#spanSpeed").html($(this).val());
+   delaySetSpeed();
 });
 
 $("#inputPattern").change(function() {
@@ -97,6 +133,10 @@ function getAll() {
     $("#status").html("Connecting...");
     $("#inputBrightness").val(data.brightness);
     $("#spanBrightness").html(data.brightness);
+	$("#inputBpm").val(data.bpm);
+    $("#spanBpm").html(data.bpm);
+	$("#inputSpeed").val(data.speed);
+    $("#spanSpeed").html(data.speed);
 
     var hexString = rgbToHex(data.solidColor.r, data.solidColor.g, data.solidColor.b);
     ignoreColorChange = true;
@@ -104,6 +144,8 @@ function getAll() {
     ignoreColorChange = false;
 
     updatePowerButtons(data.power);
+	updateAutoplayButtons(data.autoplay);
+	updateForwardButtons(data.autoplay);
 
     $("#inputPattern").find("option").remove();
 
@@ -135,6 +177,39 @@ function setPower(value) {
   });
 }
 
+function updateAutoplayButtons(value) {
+  if(value == 0) {
+    $("#btnAutoplayOn").attr("class", "btn btn-default");
+    $("#btnAutoplayOff").attr("class", "btn btn-primary");
+  } else {
+    $("#btnAutoplayOn").attr("class", "btn btn-primary");
+    $("#btnAutoplayOff").attr("class", "btn btn-default");
+  }
+}
+function setAutoplay(value) {
+  $.post(urlBase + "autoplay?value=" + value, function(data) {
+    updateAutoplayButtons(data);
+    $("#status").html("Set Autoplay: " + data);
+  });
+}
+
+function updateForwardButtons(value) {
+  if(value == 0) {
+    $("#btnForwardOn").attr("class", "btn btn-default");
+    $("#btnForwardOff").attr("class", "btn btn-primary");
+  } else {
+    $("#btnForwardOn").attr("class", "btn btn-primary");
+    $("#btnForwardOff").attr("class", "btn btn-default");
+  }
+}
+function setForward(value) {
+  $.post(urlBase + "forward?value=" + value, function(data) {
+    updateForwardButtons(data);
+    $("#status").html("Set Forward: " + data);
+  });
+}
+
+
 function delaySetBrightness() {
     clearTimeout(brightnessTimer);
     brightnessTimer = setTimeout(function() {
@@ -147,6 +222,33 @@ function setBrightness(value) {
     $("#status").html("Set Brightness: " + data);
   });
 }
+
+function delaySetBpm() {
+    clearTimeout(bpmTimer);
+    bpmTimer = setTimeout(function() {
+      setBpm($("#inputBpm").val());
+    }, 300);
+}
+
+function setBpm(value) {
+  $.post(urlBase + "bpm?value=" + value, function(data) {
+    $("#status").html("Set Bpm: " + data);
+  });
+}
+
+function delaySetSpeed() {
+    clearTimeout(speedTimer);
+    speedTimer = setTimeout(function() {
+      setSpeed($("#inputSpeed").val());
+    }, 300);
+}
+
+function setSpeed(value) {
+  $.post(urlBase + "speed?value=" + value, function(data) {
+    $("#status").html("Set Speed: " + data);
+  });
+}
+
 
 function setPattern(value) {
   $.post(urlBase + "pattern?value=" + value, function(data) {
@@ -162,9 +264,10 @@ function delaySetColor(value) {
 }
 
 function setColor(value) {
-  $.post(urlBase + "solidColor?r=" + value.r + "&g=" + value.g + "&b=" + value.b, function(data) {
+  
+	$.post(urlBase + "solidColor?r=" + value.r + "&g=" + value.g + "&b=" + value.b, function(data) {
     $("#status").html("Set Color: rgb(" + data.r + ", " + data.g + ", " + data.b + ")");
-    $("#inputPattern").val(allData.patterns.length - 1);
+    $("#inputPattern").val(16);
   });
 }
 
