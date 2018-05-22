@@ -21,7 +21,7 @@
   <div class="container">
     <form class="form-horizontal">
       <div class="form-group">
-        <div class="col-sm-1 col-sm-offset-2">
+     <div class="col-sm-1 col-sm-offset-2">
           <button type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-refresh" id="btnRefresh"></span>
           </button>
@@ -39,12 +39,48 @@
           </div>
         </div>
       </div>
+	  <div class="form-group">
+        <label class="col-sm-2 control-label">Autoplay</label>
+        <div class="col-sm-6">
+          <div class="btn-group" role="group" aria-label="Autoplay">
+            <button type="button" class="btn btn-default" id="btnAutoplayOn">On</button>
+            <button type="button" class="btn btn-default" id="btnAutoplayOff">Off</button>
+          </div>
+        </div>
+      </div>
+	  	  <div class="form-group">
+        <label class="col-sm-2 control-label">Forward</label>
+        <div class="col-sm-6">
+          <div class="btn-group" role="group" aria-label="Forward">
+            <button type="button" class="btn btn-default" id="btnForwardOn">On</button>
+            <button type="button" class="btn btn-default" id="btnForwardOff">Off</button>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <label for="inputBrightness" class="col-sm-2 control-label">Brightness</label>
         <div class="col-sm-6">
           <div class="input-group">
             <span class="input-group-addon" id="spanBrightness">128</span>
-            <input class="form-control" id="inputBrightness" type="range" step="1" min="0" max="255" />
+            <input class="form-control" id="inputBrightness" type="range" step="1" min="0" max="250" />
+          </div>
+        </div>
+      </div>
+	   <div class="form-group">
+        <label for="inputSpeed" class="col-sm-2 control-label">Speed</label>
+        <div class="col-sm-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="spanSpeed">128</span>
+            <input class="form-control" id="inputSpeed" type="range" step="1" min="0" max="250" />
+          </div>
+        </div>
+      </div>
+       <div class="form-group">
+        <label for="inputBpm" class="col-sm-2 control-label">Bpm</label>
+        <div class="col-sm-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="spanBpm">128</span>
+            <input class="form-control" id="inputBpm" type="range" step="1" min="0" max="250" />
           </div>
         </div>
       </div>
@@ -58,12 +94,15 @@
           </select>
         </div>
       </div>
+     
       <div class="form-group">
         <label for="inputColor" class="col-sm-2 control-label">Color</label>
         <div class="col-sm-6">
-          <input id="inputColor" type="text" class="form-control">
+          <div class="minicolors minicolors-theme-bootstrap minicolors-position-bottom minicolors-position-left minicolors-inline"><input id="inputColor" type="text" class="form-control minicolors-input" size="7"><div class="minicolors-panel minicolors-slider-wheel"><div class="minicolors-slider minicolors-sprite" style="background-color: rgb(203, 255, 107); "><div class="minicolors-picker" style="top: 0px; "></div></div><div class="minicolors-opacity-slider minicolors-sprite"><div class="minicolors-picker"></div></div><div class="minicolors-grid minicolors-sprite"><div class="minicolors-grid-inner"></div><div class="minicolors-picker" style="top: 31px; left: 67px; "><div></div></div></div>
+		  </div>
+		  </div>
         </div>
-      </div>
+     
       <div class="form-group">
         <div class="col-sm-6 col-sm-offset-2">
           <div class="btn-group btn-group-justified" role="group">
@@ -102,6 +141,9 @@
               </div>
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default btn-color" style="background: #FF0080;" title="Rose">&nbsp;</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default btn-color" style="background: #FFFFFF;" title="White">&nbsp;</button>
               </div>
           </div>
         </div>
